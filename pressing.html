@@ -78,7 +78,7 @@ th{background:#111;color:white}
 
 <table>
 <thead>
-<tr>
+<tr><th>Reçu</th>
 <th>Client</th>
 <th>Téléphone</th>
 <th>Service</th>
@@ -107,7 +107,7 @@ total += Number(d.montant);
 articles += Number(d.articles);
 
 tbody.innerHTML += `
-<tr>
+<td><strong>${d.numeroRecu}</strong></td>
 <td>${d.client}</td>
 <td>${d.telephone}</td>
 <td>${d.service}</td>
