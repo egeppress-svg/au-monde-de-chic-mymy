@@ -122,7 +122,21 @@ document.getElementById("ca").innerText = total + " FCFA";
 document.getElementById("traitement").innerText = articles;
 document.getElementById("livraisons").innerText = depots.length;
 }
+function genererNumeroRecu(){
 
+const aujourdhui = new Date();
+
+const annee = aujourdhui.getFullYear();
+
+const mois = String(aujourdhui.getMonth()+1).padStart(2,'0');
+
+const jour = String(aujourdhui.getDate()).padStart(2,'0');
+
+const numero = depots.length + 1;
+
+return "CM-" + annee + mois + jour + "-" + String(numero).padStart(4,'0');
+
+}
 function ajouterDepot(){
 let depot = {
 client: document.getElementById("client").value,
