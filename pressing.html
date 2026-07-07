@@ -107,7 +107,7 @@ total += Number(d.montant);
 articles += Number(d.articles);
 
 tbody.innerHTML += `
-<td><strong>${d.numeroRecu}</strong></td>
+<td><strong>${d.numeroRecu || genererNumeroRecu()}</strong></td>
 <td>${d.client}</td>
 <td>${d.telephone}</td>
 <td>${d.service}</td>
@@ -139,14 +139,17 @@ return "CM-" + annee + mois + jour + "-" + String(numero).padStart(4,'0');
 }
 function ajouterDepot(){
 let depot = {
-client: document.getElementById("client").value,
-telephone: document.getElementById("telephone").value,
-service: document.getElementById("service").value,
-articles: document.getElementById("articles").value,
-montant: document.getElementById("montant").value,
-note: document.getElementById("note").value
-};
+const numeroRecu = genererNumeroRecu();
 
+let depot = {
+    numeroRecu: numeroRecu,
+    client: document.getElementById("client").value,
+    telephone: document.getElementById("telephone").value,
+    service: document.getElementById("service").value,
+    articles: document.getElementById("articles").value,
+    montant: document.getElementById("montant").value,
+    note: document.getElementById("note").value
+};
 if(!depot.client || !depot.telephone || !depot.service || !depot.articles || !depot.montant){
 alert("Remplis tous les champs importants.");
 return;
