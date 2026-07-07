@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Module Pressing - Chic Mymy ERP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f4f4;color:#222}
+header{background:#111;color:white;padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:22px}
+.btn{background:#f5c400;color:#111;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:bold}
+.container{padding:30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:30px}
+.card{background:white;padding:20px;border-radius:18px;box-shadow:0 4px 12px #0001}
+.card h3{margin-top:0;color:#666}
+.card strong{font-size:28px}
+.form-box{background:white;padding:25px;border-radius:18px;box-shadow:0 4px 12px #0001;margin-bottom:30px}
+input,select,textarea{width:100%;padding:12px;margin:8px 0 16px;border:1px solid #ccc;border-radius:10px}
+button{background:#111;color:white;border:none;padding:14px 22px;border-radius:12px;font-weight:bold;cursor:pointer}
+table{width:100%;border-collapse:collapse;background:white;border-radius:18px;overflow:hidden}
+th,td{padding:14px;border-bottom:1px solid #eee;text-align:left}
+th{background:#111;color:white}
+.status{padding:6px 10px;border-radius:20px;background:#f5c400;font-weight:bold}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🧺 Module Pressing</h1>
+<a href="directeur.html" class="btn">Retour tableau de bord</a>
+</header>
+
+<div class="container">
+
+<div class="cards">
+<div class="card">
+<h3>Dépôts du jour</h3>
+<strong id="depots">0</strong>
+</div>
+<div class="card">
+<h3>Chiffre d'affaires</h3>
+<strong id="ca">0 FCFA</strong>
+</div>
+<div class="card">
+<h3>Articles en traitement</h3>
+<strong id="traitement">0</strong>
+</div>
+<div class="card">
+<h3>Livraisons prévues</h3>
+<strong id="livraisons">0</strong>
+</div>
+</div>
+
+<div class="form-box">
+<h2>Nouveau dépôt pressing</h2>
+
+<input id="client" type="text" placeholder="Nom du client">
+<input id="telephone" type="tel" placeholder="Téléphone du client">
+
+<select id="service">
+<option value="">Type de service</option>
+<option>Lavage simple</option>
+<option>Lavage + Repassage</option>
+<option>Repassage simple</option>
+<option>Draps / Serviettes</option>
+<option>Costume / Veste</option>
+<option>Abonnement</option>
+</select>
+
+<input id="articles" type="number" placeholder="Nombre d’articles">
+<input id="montant" type="number" placeholder="Montant payé">
+<textarea id="note" placeholder="Observation : tache, couleur, urgence..."></textarea>
+
+<button onclick="ajouterDepot()">Enregistrer le dépôt</button>
+</div>
+
+<h2>Liste des dépôts</h2>
+
+<table>
+<thead>
+<tr>
+<th>Client</th>
+<th>Téléphone</th>
+<th>Service</th>
+<th>Articles</th>
+<th>Montant</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody id="listeDepots"></tbody>
+</table>
+
+</div>
+
+<script>
+let depots = JSON.parse(localStorage.getItem("depotsPressing")) || [];
+
+function afficherDepots(){
+let tbody = document.getElementById("listeDepots");
+tbody.innerHTML = "";
+
+let total = 0;
+let articles = 0;
+
+depots.forEach(d => {
+total += Number(d.montant);
+articles += Number(d.articles);
+
+tbody.innerHTML += `
+<tr>
+<td>${d.client}</td>
+<td>${d.telephone}</td>
+<td>${d.service}</td>
+<td>${d.articles}</td>
+<td>${d.montant} FCFA</td>
+<td><span class="status">En traitement</span></td>
+</tr>`;
+});
+
+document.getElementById("depots").innerText = depots.length;
+document.getElementById("ca").innerText = total + " FCFA";
+document.getElementById("traitement").innerText = articles;
+document.getElementById("livraisons").innerText = depots.length;
+}
+
+function ajouterDepot(){
+let depot = {
+client: document.getElementById("client").value,
+telephone: document.getElementById("telephone").value,
+service: document.getElementById("service").value,
+articles: document.getElementById("articles").value,
+montant: document.getElementById("montant").value,
+note: document.getElementById("note").value
+};
+
+if(!depot.client || !depot.telephone || !depot.service || !depot.articles || !depot.montant){
+alert("Remplis tous les champs importants.");
+return;
+}
+
+depots.push(depot);
+localStorage.setItem("depotsPressing", JSON.stringify(depots));
+afficherDepots();
+
+document.getElementById("client").value="";
+document.getElementById("telephone").value="";
+document.getElementById("service").value="";
+document.getElementById("articles").value="";
+document.getElementById("montant").value="";
+document.getElementById("note").value="";
+}
+
+afficherDepots();
+</script>
+
+</body>
+</html>
