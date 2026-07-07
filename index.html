@@ -18,93 +18,47 @@
     nav a:hover{color:#f6c400}
     .top-btn{background:#f6c400;color:#111;padding:13px 22px;border-radius:30px;text-decoration:none;font-weight:bold}
 
-    .hero{
-      min-height:560px;
-      background:linear-gradient(90deg,#111 0%,#111 35%,rgba(0,0,0,.35)),
-      url("hero.png");
-      background-size:cover;
-      background-position:center;
-      color:white;
-      display:flex;
-      align-items:center;
-      padding:70px 7%;
-    }
+  .hero{
+height:700px;
+background:
+linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url("images/hero.jpg");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
 
-    .hero h2{font-size:70px;color:#f6c400;line-height:.9;margin-bottom:20px}
-    .hero p{font-size:20px;max-width:520px;line-height:1.5;margin-bottom:30px}
-    .btn{display:inline-block;padding:14px 25px;border-radius:30px;text-decoration:none;font-weight:bold;margin-right:12px}
-    .yellow{background:#f6c400;color:#111}
-    .dark{border:2px solid white;color:white}
+.overlay{
+width:100%;
+}
 
-    .strip{display:grid;grid-template-columns:repeat(4,1fr);background:#171717;color:white}
-    .strip div{padding:24px;text-align:center;border-right:1px solid #333;font-weight:bold}
-    .strip span{display:block;font-size:34px;margin-bottom:8px}
+.hero-text h1{
+font-size:70px;
+font-weight:800;
+margin-bottom:20px;
+}
 
-    section{padding:65px 7%}
-    .title{text-align:center;margin-bottom:35px}
-    .title h2{font-size:36px}
-    .line{width:80px;height:4px;background:#f6c400;margin:12px auto;border-radius:5px}
+.hero-text span{
+color:#f6c400;
+}
 
-    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
-    .card{background:white;border-radius:18px;padding:28px;box-shadow:0 8px 25px rgba(0,0,0,.14)}
-    .card h3{margin-bottom:12px;color:#111}
-    .card p{color:#555;line-height:1.5}
+.mini{
+letter-spacing:5px;
+font-size:18px;
+margin-bottom:15px;
+}
 
-    .about{background:#f7f7f7;text-align:center}
-    .about p{max-width:850px;margin:auto;font-size:18px;line-height:1.7}
-
-    .reservation{background:#111;color:white;text-align:center}
-    .reservation h2{color:#f6c400;font-size:36px;margin-bottom:15px}
-    .reservation p{font-size:18px;margin-bottom:25px}
-
-    footer{background:#000;color:white;text-align:center;padding:30px;line-height:1.7}
-    .float{position:fixed;right:20px;bottom:20px;background:#25d366;color:white;padding:14px 22px;border-radius:40px;text-decoration:none;font-weight:bold;z-index:1000}
-
-    @media(max-width:900px){
-      header{flex-direction:column;gap:15px}
-      nav{text-align:center}
-      nav a{display:inline-block;margin:6px}
-      .hero h2{font-size:46px}
-      .strip,.services{grid-template-columns:1fr}
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">
-    <img src="logo.jpg" alt="Logo Chic Mymy">
-    <div>
-      <h1>AU MONDE<br>DE <span>CHIC MYMY</span></h1>
-      <p>Votre beauté, votre confort, notre passion.</p>
-    </div>
-  </div>
-
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#services">Services</a>
-    <a href="#tarifs">Tarifs</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#reservation">Réservation</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <a class="top-btn" href="https://wa.me/22507784441">WhatsApp</a>
-</header>
-
-<section class="hero" id="accueil">
-  <div>
-    <h2>CHIC<br>MYMY</h2>
-    <p>
-      Un complexe multi-services à votre écoute. Beauté, entretien,
-      pressing, lavage auto, évènementiel et services pratiques :
-      tout en un seul lieu.
-    </p>
-    <a href="#reservation" class="btn yellow">Réserver maintenant</a>
-    <a href="https://wa.me/22507784441" class="btn dark">WhatsApp</a>
-  </div>
-</section>
+.description{
+font-size:22px;
+max-width:700px;
+margin:auto;
+margin-bottom:35px;
+line-height:1.6;
+}
 
 <div class="strip">
   <div><span>✂️</span>Salon de coiffure</div>
