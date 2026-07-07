@@ -1,399 +1,174 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Au Monde de Chic Mymy</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Arial,sans-serif;background:#fff;color:#222}
+    header{background:#111;color:white;padding:15px 6%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1000}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:80px;height:80px;border-radius:12px}
+    .logo h1{font-size:24px;line-height:1.1}
+    .logo span{color:#f6c400}
+    .logo p{font-size:12px;color:#f6c400;margin-top:5px}
+    nav a{color:white;text-decoration:none;margin:0 12px;font-weight:bold}
+    nav a:hover{color:#f6c400}
+    .top-btn{background:#f6c400;color:#111;padding:13px 22px;border-radius:30px;text-decoration:none;font-weight:bold}
+
+    .hero{
+      min-height:560px;
+      background:linear-gradient(90deg,#111 0%,#111 35%,rgba(0,0,0,.35)),
+      url("hero.png");
+      background-size:cover;
+      background-position:center;
+      color:white;
+      display:flex;
+      align-items:center;
+      padding:70px 7%;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #222;
-    }
+    .hero h2{font-size:70px;color:#f6c400;line-height:.9;margin-bottom:20px}
+    .hero p{font-size:20px;max-width:520px;line-height:1.5;margin-bottom:30px}
+    .btn{display:inline-block;padding:14px 25px;border-radius:30px;text-decoration:none;font-weight:bold;margin-right:12px}
+    .yellow{background:#f6c400;color:#111}
+    .dark{border:2px solid white;color:white}
 
-    header {
-      background: #111;
-      color: white;
-      padding: 15px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+    .strip{display:grid;grid-template-columns:repeat(4,1fr);background:#171717;color:white}
+    .strip div{padding:24px;text-align:center;border-right:1px solid #333;font-weight:bold}
+    .strip span{display:block;font-size:34px;margin-bottom:8px}
 
-    .logo-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    section{padding:65px 7%}
+    .title{text-align:center;margin-bottom:35px}
+    .title h2{font-size:36px}
+    .line{width:80px;height:4px;background:#f6c400;margin:12px auto;border-radius:5px}
 
-    .logo-box img {
-      width: 70px;
-      height: 70px;
-      border-radius: 12px;
-    }
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}
+    .card{background:white;border-radius:18px;padding:28px;box-shadow:0 8px 25px rgba(0,0,0,.14)}
+    .card h3{margin-bottom:12px;color:#111}
+    .card p{color:#555;line-height:1.5}
 
-    .logo-text h1 {
-      font-size: 22px;
-      line-height: 1.1;
-    }
+    .about{background:#f7f7f7;text-align:center}
+    .about p{max-width:850px;margin:auto;font-size:18px;line-height:1.7}
 
-    .logo-text span {
-      color: #f6c400;
-    }
+    .reservation{background:#111;color:white;text-align:center}
+    .reservation h2{color:#f6c400;font-size:36px;margin-bottom:15px}
+    .reservation p{font-size:18px;margin-bottom:25px}
 
-    .logo-text p {
-      font-size: 12px;
-      color: #f6c400;
-      margin-top: 4px;
-    }
+    footer{background:#000;color:white;text-align:center;padding:30px;line-height:1.7}
+    .float{position:fixed;right:20px;bottom:20px;background:#25d366;color:white;padding:14px 22px;border-radius:40px;text-decoration:none;font-weight:bold;z-index:1000}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #f6c400;
-    }
-
-    .whatsapp-top {
-      background: #f6c400;
-      color: #111;
-      padding: 12px 18px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      background: linear-gradient(90deg, #111 0%, #111 35%, rgba(0,0,0,0.4)),
-      url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80");
-      background-size: cover;
-      background-position: center;
-      min-height: 520px;
-      color: white;
-      display: flex;
-      align-items: center;
-      padding: 60px 7%;
-    }
-
-    .hero-content {
-      max-width: 500px;
-    }
-
-    .hero-content h2 {
-      font-size: 58px;
-      color: #f6c400;
-      line-height: 0.95;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 19px;
-      line-height: 1.5;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-right: 12px;
-    }
-
-    .btn-yellow {
-      background: #f6c400;
-      color: #111;
-    }
-
-    .btn-dark {
-      border: 2px solid white;
-      color: white;
-    }
-
-    .activity-strip {
-      background: #181818;
-      color: white;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-    }
-
-    .activity {
-      padding: 22px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-right: 1px solid #333;
-    }
-
-    .activity-icon {
-      background: #f6c400;
-      color: #111;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    section {
-      padding: 60px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .section-title h2 {
-      font-size: 34px;
-      color: #222;
-    }
-
-    .underline {
-      width: 80px;
-      height: 4px;
-      background: #f6c400;
-      margin: 12px auto;
-      border-radius: 4px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .card h3 {
-      color: #111;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #555;
-      line-height: 1.5;
-      font-size: 15px;
-    }
-
-    .about {
-      background: #f7f7f7;
-      text-align: center;
-    }
-
-    .about p {
-      max-width: 850px;
-      margin: auto;
-      line-height: 1.7;
-      font-size: 18px;
-    }
-
-    .reservation {
-      background: #111;
-      color: white;
-      text-align: center;
-    }
-
-    .reservation h2 {
-      font-size: 36px;
-      color: #f6c400;
-      margin-bottom: 15px;
-    }
-
-    .reservation p {
-      margin-bottom: 25px;
-      font-size: 18px;
-    }
-
-    footer {
-      background: #000;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      font-size: 14px;
-    }
-
-    .float-whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: #25d366;
-      color: white;
-      padding: 14px 22px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      z-index: 1000;
-    }
-
-    @media(max-width: 900px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      nav {
-        text-align: center;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 6px;
-      }
-
-      .hero-content h2 {
-        font-size: 42px;
-      }
-
-      .activity-strip,
-      .services {
-        grid-template-columns: 1fr;
-      }
+    @media(max-width:900px){
+      header{flex-direction:column;gap:15px}
+      nav{text-align:center}
+      nav a{display:inline-block;margin:6px}
+      .hero h2{font-size:46px}
+      .strip,.services{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo-box">
-      <img src="logo.png" alt="Logo Chic Mymy">
-      <div class="logo-text">
-        <h1>AU MONDE<br>DE <span>CHIC MYMY</span></h1>
-        <p>Votre beauté, votre confort, notre passion.</p>
-      </div>
-    </div>
-
-    <nav>
-      <a href="#accueil">Accueil</a>
-      <a href="#services">Services</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#galerie">Galerie</a>
-      <a href="#reservation">Réservation</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <a class="whatsapp-top" href="https://wa.me/22507784441">WhatsApp</a>
-  </header>
-
-  <section class="hero" id="accueil">
-    <div class="hero-content">
-      <h2>CHIC<br>MYMY</h2>
-      <p>
-        Un complexe multi-services à votre écoute. Beauté, entretien,
-        pressing, lavage auto, évènementiel et services pratiques :
-        tout en un seul lieu.
-      </p>
-      <a href="#reservation" class="btn btn-yellow">Réserver maintenant</a>
-      <a href="https://wa.me/22507784441" class="btn btn-dark">WhatsApp</a>
-    </div>
-  </section>
-
-  <div class="activity-strip">
-    <div class="activity">
-      <div class="activity-icon">✂️</div>
-      <strong>Salon de coiffure</strong>
-    </div>
-    <div class="activity">
-      <div class="activity-icon">🧺</div>
-      <strong>Pressing</strong>
-    </div>
-    <div class="activity">
-      <div class="activity-icon">🚗</div>
-      <strong>Lavage auto</strong>
-    </div>
-    <div class="activity">
-      <div class="activity-icon">🎉</div>
-      <strong>Évènementiel</strong>
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Logo Chic Mymy">
+    <div>
+      <h1>AU MONDE<br>DE <span>CHIC MYMY</span></h1>
+      <p>Votre beauté, votre confort, notre passion.</p>
     </div>
   </div>
 
-  <section id="services">
-    <div class="section-title">
-      <h2>NOS SERVICES</h2>
-      <div class="underline"></div>
-    </div>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#reservation">Réservation</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <div class="services">
-      <div class="card">
-        <h3>Hairlook by Chic Mymy</h3>
-        <p>Coiffure femme, homme, enfants, soins capillaires, tresses, locks et beauté naturelle.</p>
-      </div>
+  <a class="top-btn" href="https://wa.me/22507784441">WhatsApp</a>
+</header>
 
-      <div class="card">
-        <h3>Chic Mymy Express Pressing</h3>
-        <p>Lavage, repassage, nettoyage à sec, amidonnage, ramassage et livraison.</p>
-      </div>
-
-      <div class="card">
-        <h3>Car Wash by Chic Mymy</h3>
-        <p>Lavage auto professionnel intérieur et extérieur, aspiration et entretien complet.</p>
-      </div>
-
-      <div class="card">
-        <h3>Espace Évènementiel</h3>
-        <p>Location d’espace pour anniversaires, réunions, baby showers, cérémonies et évènements privés.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="about">
-    <div class="section-title">
-      <h2>Bienvenue chez Chic Mymy</h2>
-      <div class="underline"></div>
-    </div>
-
+<section class="hero" id="accueil">
+  <div>
+    <h2>CHIC<br>MYMY</h2>
     <p>
-      Situé à Bingerville, Sébia Yao, route de Bregbo, Au Monde de Chic Mymy
-      réunit beauté, pressing, lavage auto, évènementiel et services pratiques
-      dans un même complexe moderne, accueillant et professionnel.
+      Un complexe multi-services à votre écoute. Beauté, entretien,
+      pressing, lavage auto, évènementiel et services pratiques :
+      tout en un seul lieu.
     </p>
-  </section>
+    <a href="#reservation" class="btn yellow">Réserver maintenant</a>
+    <a href="https://wa.me/22507784441" class="btn dark">WhatsApp</a>
+  </div>
+</section>
 
-  <section class="reservation" id="reservation">
-    <h2>Réservez votre service maintenant</h2>
-    <p>Contactez-nous directement sur WhatsApp pour une réservation rapide.</p>
-    <a href="https://wa.me/22507784441" class="btn btn-yellow">Réserver sur WhatsApp</a>
-  </section>
+<div class="strip">
+  <div><span>✂️</span>Salon de coiffure</div>
+  <div><span>🧺</span>Pressing</div>
+  <div><span>🚗</span>Lavage auto</div>
+  <div><span>🎉</span>Évènementiel</div>
+</div>
 
-  <footer id="contact">
-    <p><strong>AU MONDE DE CHIC MYMY</strong></p>
-    <p>Bingerville, Sébia Yao, route de Bregbo</p>
-    <p>WhatsApp : 07 78 44 41</p>
-    <p>© 2026 Chic Mymy - Tous droits réservés.</p>
-  </footer>
+<section id="services">
+  <div class="title">
+    <h2>NOS SERVICES</h2>
+    <div class="line"></div>
+  </div>
 
-  <a class="float-whatsapp" href="https://wa.me/22507784441">WhatsApp</a>
+  <div class="services">
+    <div class="card">
+      <h3>Hairlook by Chic Mymy</h3>
+      <p>Coiffure femme, homme, enfants, soins capillaires, tresses, locks et beauté naturelle.</p>
+    </div>
+
+    <div class="card">
+      <h3>Chic Mymy Express Pressing</h3>
+      <p>Lavage, repassage, nettoyage à sec, amidonnage, ramassage et livraison.</p>
+    </div>
+
+    <div class="card">
+      <h3>Car Wash by Chic Mymy</h3>
+      <p>Lavage auto professionnel intérieur et extérieur, aspiration et entretien complet.</p>
+    </div>
+
+    <div class="card">
+      <h3>Espace Évènementiel</h3>
+      <p>Location d’espace pour anniversaires, réunions, baby showers, cérémonies et évènements privés.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="title">
+    <h2>Bienvenue chez Chic Mymy</h2>
+    <div class="line"></div>
+  </div>
+
+  <p>
+    Situé à Bingerville, Sébia Yao, route de Bregbo, Au Monde de Chic Mymy
+    réunit beauté, pressing, lavage auto, évènementiel et services pratiques
+    dans un même complexe moderne, accueillant et professionnel.
+  </p>
+</section>
+
+<section class="reservation" id="reservation">
+  <h2>Réservez votre service maintenant</h2>
+  <p>Contactez-nous directement sur WhatsApp pour une réservation rapide.</p>
+  <a href="https://wa.me/22507784441" class="btn yellow">Réserver sur WhatsApp</a>
+</section>
+
+<footer id="contact">
+  <p><strong>AU MONDE DE CHIC MYMY</strong></p>
+  <p>Bingerville, Sébia Yao, route de Bregbo</p>
+  <p>WhatsApp : 07 78 44 41</p>
+  <p>© 2026 Chic Mymy - Tous droits réservés.</p>
+</footer>
+
+<a class="float" href="https://wa.me/22507784441">WhatsApp</a>
 
 </body>
 </html>
